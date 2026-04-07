@@ -1,20 +1,19 @@
-
-/* BACKGROUND (GitHub style) */
+/* BACKGROUND */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #0d1117;
-    color: #c9d1d9;
+    background-color: #000000; /* PURE BLACK */
+    color: #e6edf3;
 }
 
-/* CENTER CONTENT (80% WIDTH) */
+/* CENTER CONTAINER */
 .container {
     width: 80%;
-    margin: 40px auto;
-    background-color: #161b22;
+    margin: 50px auto;
+    background-color: #1c1c1c; /* DARK GREY */
     padding: 30px;
-    border-radius: 10px;
-    border: 1px solid #30363d;
+    border-radius: 12px;
+    border: 1px solid #2f2f2f;
 }
 
 /* NAVBAR */
@@ -22,38 +21,45 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #30363d;
+    border-bottom: 1px solid #2f2f2f;
     padding-bottom: 15px;
 }
 
 header h1 {
-    color: #58a6ff;
     font-size: 20px;
+    color: #4da6ff;
 }
 
+/* NAV LINKS */
 nav a {
-    margin-left: 15px;
     text-decoration: none;
     color: #c9d1d9;
+    margin-left: 15px;
     padding: 6px 12px;
-    border: 1px solid #30363d;
     border-radius: 6px;
-    transition: 0.3s;
+    border: 1px solid transparent;
+    transition: 0.25s;
 }
 
 nav a:hover {
-    background-color: #238636;
-    color: white;
+    background-color: #2f2f2f;
+    border: 1px solid #4da6ff;
+    color: #4da6ff;
 }
 
 /* HERO */
 .hero {
     text-align: center;
-    margin: 40px 0;
+    margin: 50px 0;
 }
 
 .hero h2 {
-    font-size: 28px;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #9da5b4;
 }
 
 /* SECTIONS */
@@ -62,32 +68,39 @@ section {
 }
 
 section h2 {
-    border-bottom: 1px solid #30363d;
+    border-bottom: 1px solid #2f2f2f;
     padding-bottom: 5px;
 }
 
-/* PROJECT CARDS */
+/* PROJECT GRID */
 .projects {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
 }
 
+/* CARDS */
 .card {
-    background-color: #0d1117;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #30363d;
+    background-color: #111111;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #2f2f2f;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #4da6ff;
 }
 
 .card h3 {
-    color: #58a6ff;
+    color: #4da6ff;
 }
 
 /* FOOTER */
 footer {
     text-align: center;
-    border-top: 1px solid #30363d;
+    border-top: 1px solid #2f2f2f;
     padding-top: 10px;
     color: #8b949e;
 }
