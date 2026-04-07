@@ -1,10 +1,150 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My E-Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+
+        header {
+            background-color: #161b22;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #30363d;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 20px;
+            color: #58a6ff;
+        }
+
+        nav a {
+            color: #c9d1d9;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #58a6ff;
+        }
+
+        .container {
+            padding: 40px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .hero h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: #8b949e;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #161b22;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #30363d;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #58a6ff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #30363d;
+            color: #8b949e;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Welcome to My Portfolio</h1>
-    <p>This is my work and projects.</p>
+
+<header>
+    <h1>MyPortfolio</h1>
+    <nav>
+        <a href="#">About</a>
+        <a href="#">Projects</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <div class="hero">
+        <h2>Hello, I'm a Developer 👋</h2>
+        <p>I build websites, design UI, and solve problems using code.</p>
+    </div>
+
+    <div class="section">
+        <h2>📌 About Me</h2>
+        <p>
+            I am passionate about technology, problem-solving, and continuous learning.
+            I enjoy working on real-world projects and improving my skills.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>💻 Projects</h2>
+        <div class="projects">
+            <div class="card">
+                <h3>Project 1</h3>
+                <p>Short description of your project.</p>
+            </div>
+
+            <div class="card">
+                <h3>Project 2</h3>
+                <p>Short description of your project.</p>
+            </div>
+
+            <div class="card">
+                <h3>Project 3</h3>
+                <p>Short description of your project.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📞 Contact</h2>
+        <p>Email: your@email.com</p>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 My Portfolio</p>
+</footer>
+
 </body>
 </html>
