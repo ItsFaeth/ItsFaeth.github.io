@@ -1,1 +1,93 @@
 
+/* BACKGROUND (GitHub style) */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0d1117;
+    color: #c9d1d9;
+}
+
+/* CENTER CONTENT (80% WIDTH) */
+.container {
+    width: 80%;
+    margin: 40px auto;
+    background-color: #161b22;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #30363d;
+}
+
+/* NAVBAR */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 15px;
+}
+
+header h1 {
+    color: #58a6ff;
+    font-size: 20px;
+}
+
+nav a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #c9d1d9;
+    padding: 6px 12px;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: #238636;
+    color: white;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.hero h2 {
+    font-size: 28px;
+}
+
+/* SECTIONS */
+section {
+    margin-bottom: 40px;
+}
+
+section h2 {
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 5px;
+}
+
+/* PROJECT CARDS */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #0d1117;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #30363d;
+}
+
+.card h3 {
+    color: #58a6ff;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    border-top: 1px solid #30363d;
+    padding-top: 10px;
+    color: #8b949e;
+}
