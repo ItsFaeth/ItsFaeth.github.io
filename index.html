@@ -3,148 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wan Ahmad Faiz | Portfolio </title>
+    <title>Wan Ahmad Faiz | Portfolio</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #0d1117;
-            color: #c9d1d9;
-        }
-
-        header {
-            background-color: #161b22;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #30363d;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 20px;
-            color: #58a6ff;
-        }
-
-        nav a {
-            color: #c9d1d9;
-            margin-left: 20px;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            color: #58a6ff;
-        }
-
-        .container {
-            padding: 40px;
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        .hero {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .hero h2 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            color: #8b949e;
-        }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background-color: #161b22;
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #30363d;
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: #58a6ff;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid #30363d;
-            color: #8b949e;
-        }
-    </style>
+    <!-- LINK CSS FILE -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-    <h1>MyPortfolio</h1>
-    <nav>
-        <a href="#">About</a>
-        <a href="#">Projects</a>
-        <a href="#">Contact</a>
-    </nav>
-</header>
+    <div class="container">
 
-<div class="container">
+        <!-- NAVBAR -->
+        <header>
+            <h1>Wan Ahmad Faiz</h1>
+            <nav>
+                <a href="index.html">🏠 Home</a>
+                <a href="resume.pdf" target="_blank">📄 Resume</a>
+                <a href="coverletter.pdf" target="_blank">✉️ Cover Letter</a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank">💼 LinkedIn</a>
+                <a href="gallery.html">🖼️ Gallery</a>
+            </nav>
+        </header>
 
-    <div class="hero">
-        <h2>Hello, I'm a Developer 👋</h2>
-        <p>I build websites, design UI, and solve problems using code.</p>
-    </div>
+        <!-- HERO -->
+        <section class="hero">
+            <h2>Hello, I'm Faiz 👋</h2>
+            <p>A passionate student in technology, networking, and UI design.</p>
+        </section>
 
-    <div class="section">
-        <h2>📌 About Me</h2>
-        <p>
-            I am passionate about technology, problem-solving, and continuous learning.
-            I enjoy working on real-world projects and improving my skills.
-        </p>
-    </div>
+        <!-- ABOUT -->
+        <section>
+            <h2>About Me</h2>
+            <p>
+                I am a motivated individual who enjoys solving problems, learning new technologies,
+                and building meaningful digital experiences.
+            </p>
+        </section>
 
-    <div class="section">
-        <h2>💻 Projects</h2>
-        <div class="projects">
-            <div class="card">
-                <h3>Project 1</h3>
-                <p>Short description of your project.</p>
+        <!-- PROJECTS -->
+        <section>
+            <h2>Projects</h2>
+
+            <div class="projects">
+                <div class="card">
+                    <h3>Project 1</h3>
+                    <p>Describe your project here.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Project 2</h3>
+                    <p>Describe your project here.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Project 3</h3>
+                    <p>Describe your project here.</p>
+                </div>
             </div>
 
-            <div class="card">
-                <h3>Project 2</h3>
-                <p>Short description of your project.</p>
-            </div>
+        </section>
 
-            <div class="card">
-                <h3>Project 3</h3>
-                <p>Short description of your project.</p>
-            </div>
-        </div>
+        <!-- FOOTER -->
+        <footer>
+            <p>© 2026 Wan Ahmad Faiz</p>
+        </footer>
+
     </div>
-
-    <div class="section">
-        <h2>📞 Contact</h2>
-        <p>Email: your@email.com</p>
-    </div>
-
-</div>
-
-<footer>
-    <p>© 2026 My Portfolio</p>
-</footer>
 
 </body>
 </html>
