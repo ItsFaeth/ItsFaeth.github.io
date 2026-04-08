@@ -117,8 +117,9 @@ pdfjsLib.getDocument('files/resume.pdf').promise
     renderPage(currentPage);
   })
   .catch(err => {
-    loading.innerHTML = "❌ Failed to load PDF";
-    console.error(err);
+    console.error("PDF ERROR:", err);
+    document.getElementById('pdf-loading').innerHTML =
+      "❌ Cannot load PDF (check path)";
   });
 
 // BUTTON CONTROLS
