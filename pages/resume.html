@@ -37,27 +37,21 @@
     </div>
 
     <!-- PDF VIEWER -->
-    <div class="pdf-viewer-wrapper">
-      <div class="pdf-toolbar">
-        <span class="pdf-label"><i class="fa-regular fa-file-pdf"></i>&nbsp; resume.pdf</span>
-        <div class="pdf-controls">
-          <button id="prev-page" title="Previous page"><i class="fa-solid fa-chevron-left"></i></button>
-          <span id="page-info">Page 1</span>
-          <button id="next-page" title="Next page"><i class="fa-solid fa-chevron-right"></i></button>
-          <button id="zoom-out" title="Zoom out"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
-          <button id="zoom-in" title="Zoom in"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-        </div>
-        <a class="pdf-download-btn" href="/files/resume.pdf" download>
-          <i class="fa-solid fa-download"></i>&nbsp; Download
+    <div class="pdf-actions">
+        <a
+          class="button primary"
+          href="files/RESUME-MUHAMMAD-HAKIM-ZAABA.pdf"
+          download>
+          Download Resume (PDF)
         </a>
       </div>
-      <div class="pdf-canvas-container">
-        <canvas id="pdf-canvas"></canvas>
-        <div id="pdf-loading" class="pdf-loading">
-          <i class="fa-solid fa-spinner fa-spin"></i>&nbsp; Loading PDF...
-        </div>
+
+      <div class="pdf-viewer">
+        <iframe
+          src="files/RESUME-MUHAMMAD-HAKIM-ZAABA.pdf"
+          title="Muhammad Hakim Resume PDF">
+        </iframe>
       </div>
-    </div>
 
     <style>
       .pdf-viewer-wrapper {
