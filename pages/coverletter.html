@@ -181,7 +181,7 @@
         });
       }
 
-      pdfjsLib.getDocument('cover_letter.pdf').promise.then(doc => {
+      pdfjsLib.getDocument('files/cover_letter.pdf').promise.then(doc => {
         pdfDoc = doc;
         totalPages = doc.numPages;
         renderPage(currentPage);
