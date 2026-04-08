@@ -59,6 +59,8 @@
   </div>
 </div>
 
+    <main>
+      <script>
       prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderPage(currentPage); } });
       nextBtn.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderPage(currentPage); } });
       document.getElementById('zoom-in').addEventListener('click', () => { scale = Math.min(scale + 0.2, 3.0); renderPage(currentPage); });
