@@ -47,7 +47,7 @@
           <button id="zoom-out" title="Zoom out"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
           <button id="zoom-in" title="Zoom in"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
         </div>
-        <a class="pdf-download-btn" href="resume.pdf" download>
+        <a class="pdf-download-btn" href="files/resume.pdf" download>
           <i class="fa-solid fa-download"></i>&nbsp; Download
         </a>
       </div>
@@ -181,14 +181,12 @@
         });
       }
 
-      pdfjsLib.getDocument('resume.pdf').promise.then(doc => {
+      pdfjsLib.getDocument('files/resume.pdf').promise.then(doc => {
         pdfDoc = doc;
         totalPages = doc.numPages;
         renderPage(currentPage);
-      }).catch(() => {
-        loading.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>&nbsp; Could not load PDF. Ensure resume.pdf is in the same folder.';
-      });
-
+      }).
+        
       prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderPage(currentPage); } });
       nextBtn.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderPage(currentPage); } });
       document.getElementById('zoom-in').addEventListener('click', () => { scale = Math.min(scale + 0.2, 3.0); renderPage(currentPage); });
