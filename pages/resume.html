@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume | Wan Ahmad Faiz</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="navbar">
+      <div class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">WAF</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="resume.html" class="nav-link active">Resume</a></li>
+        <li><a href="coverletter.html" class="nav-link">Cover Letter</a></li>
+        <li><a href="linkedin.html" class="nav-link">LinkedIn</a></li>
+        <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="page-wrapper">
+    <div class="page-banner">
+      <div class="section-label">// resume</div>
+      <h1>Wan Ahmad Faiz</h1>
+      <p>Diploma in Information Technology · UTHM Pagoh, Johor</p>
+    </div>
+
+    <!-- PDF VIEWER -->
+    <div class="pdf-viewer-wrapper">
+      <div class="pdf-toolbar">
+        <span class="pdf-label"><i class="fa-regular fa-file-pdf"></i>&nbsp; resume.pdf</span>
+        <div class="pdf-controls">
+          <button id="prev-page" title="Previous page"><i class="fa-solid fa-chevron-left"></i></button>
+          <span id="page-info">Page 1</span>
+          <button id="next-page" title="Next page"><i class="fa-solid fa-chevron-right"></i></button>
+          <button id="zoom-out" title="Zoom out"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+          <button id="zoom-in" title="Zoom in"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+        </div>
+        <a class="pdf-download-btn" href="resume.pdf" download>
+          <i class="fa-solid fa-download"></i>&nbsp; Download
+        </a>
+      </div>
+      <div class="pdf-canvas-container">
+        <canvas id="pdf-canvas"></canvas>
+        <div id="pdf-loading" class="pdf-loading">
+          <i class="fa-solid fa-spinner fa-spin"></i>&nbsp; Loading PDF...
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .pdf-viewer-wrapper {
+        max-width: 960px;
+        margin: 2rem auto 3rem;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+        border: 1px solid rgba(255,255,255,0.08);
+        background: var(--surface, #1a1a2e);
+      }
+      .pdf-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.65rem 1.25rem;
+        background: rgba(255,255,255,0.05);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.82rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .pdf-label {
+        color: var(--text-muted, #aaa);
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      .pdf-controls {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-muted, #aaa);
+        font-size: 0.8rem;
+      }
+      .pdf-controls button {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        color: var(--text, #eee);
+        width: 30px; height: 30px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: background 0.2s;
+        font-size: 0.75rem;
+      }
+      .pdf-controls button:hover { background: rgba(255,255,255,0.16); }
+      .pdf-controls button:disabled { opacity: 0.35; cursor: not-allowed; }
+      #page-info { min-width: 80px; text-align: center; }
+      .pdf-download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: var(--accent, #7c6af7);
+        color: #fff !important;
+        padding: 0.35rem 0.9rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        text-decoration: none;
+        transition: opacity 0.2s;
+        font-family: 'JetBrains Mono', monospace;
+        white-space: nowrap;
+      }
+      .pdf-download-btn:hover { opacity: 0.82; }
+      .pdf-canvas-container {
+        position: relative;
+        width: 100%;
+        overflow-x: auto;
+        display: flex;
+        justify-content: center;
+        background: #2a2a3e;
+        min-height: 500px;
+        padding: 1.5rem 0;
+      }
+      #pdf-canvas {
+        display: block;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+        border-radius: 4px;
+        max-width: 100%;
+      }
+      .pdf-loading {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted, #aaa);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        gap: 0.5rem;
+        background: #2a2a3e;
+      }
+      .pdf-loading.hidden { display: none; }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+      let pdfDoc = null, currentPage = 1, totalPages = 1, scale = 1.4;
+      const canvas = document.getElementById('pdf-canvas');
+      const ctx = canvas.getContext('2d');
+      const loading = document.getElementById('pdf-loading');
+      const pageInfo = document.getElementById('page-info');
+      const prevBtn = document.getElementById('prev-page');
+      const nextBtn = document.getElementById('next-page');
+
+      function renderPage(num) {
+        pdfDoc.getPage(num).then(page => {
+          const viewport = page.getViewport({ scale });
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          page.render({ canvasContext: ctx, viewport }).promise.then(() => {
+            loading.classList.add('hidden');
+            pageInfo.textContent = 'Page ' + num + ' of ' + totalPages;
+            prevBtn.disabled = num <= 1;
+            nextBtn.disabled = num >= totalPages;
+          });
+        });
+      }
+
+      pdfjsLib.getDocument('resume.pdf').promise.then(doc => {
+        pdfDoc = doc;
+        totalPages = doc.numPages;
+        renderPage(currentPage);
+      }).catch(() => {
+        loading.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>&nbsp; Could not load PDF. Ensure resume.pdf is in the same folder.';
+      });
+
+      prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderPage(currentPage); } });
+      nextBtn.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderPage(currentPage); } });
+      document.getElementById('zoom-in').addEventListener('click', () => { scale = Math.min(scale + 0.2, 3.0); renderPage(currentPage); });
+      document.getElementById('zoom-out').addEventListener('click', () => { scale = Math.max(scale - 0.2, 0.6); renderPage(currentPage); });
+    </script>
+
+    <!-- ORIGINAL HTML CONTENT (hidden, kept for reference) -->
+    <div style="display:none">
+    <div class="resume-block full">
+      <h3><i class="fa-regular fa-user"></i> Summary</h3>
+      <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;">
+        A dedicated and adaptable individual who approaches challenges with a positive and determined mindset. 
+        I value growth and continuously strive to improve myself in different aspects of life. I am responsible, 
+        organized, and able to manage my time effectively when handling multiple tasks. I communicate well with 
+        others and can adjust my approach depending on the situation. I am curious by nature, always open to 
+        learning new things and exploring different perspectives.
+      </p>
+    </div>
+
+    <div class="resume-grid">
+
+      <!-- LEFT COLUMN -->
+      <div>
+
+        <!-- EDUCATION -->
+        <div class="resume-block">
+          <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+          <div class="resume-entry">
+            <div class="resume-entry-title">Diploma in Information Technology</div>
+            <div class="resume-entry-sub">Universiti Tun Hussein Onn Malaysia (UTHM), Pagoh, Johor</div>
+            <div class="resume-entry-date">2025 – 2028 · CGPA: 3.60</div>
+          </div>
+          <div class="resume-entry">
+            <div class="resume-entry-title">SPM — 7A, 2B</div>
+            <div class="resume-entry-sub">SMK Jeli, Kelantan</div>
+            <div class="resume-entry-date">2020 – 2025</div>
+          </div>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="resume-block">
+          <h3><i class="fa-solid fa-code-branch"></i> Projects & Assignments</h3>
+          <div class="resume-entry">
+            <div class="resume-entry-title">Network & Data Communication</div>
+            <div class="resume-entry-sub">Team Leader</div>
+            <ul class="resume-list" style="margin-top:0.5rem;">
+              <li>Designed a secure small business network</li>
+              <li>Supported staff, guest users and VoIP</li>
+              <li>Provided internet access and shared resources</li>
+            </ul>
+          </div>
+          <div class="resume-entry">
+            <div class="resume-entry-title">Operating System</div>
+            <div class="resume-entry-sub">Team Member</div>
+            <ul class="resume-list" style="margin-top:0.5rem;">
+              <li>Analyzed CPU scheduling schemes (FCFS, Round Robin)</li>
+              <li>Evaluated suitability for AI-based applications</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- REFERENCES -->
+        <div class="resume-block">
+          <h3><i class="fa-regular fa-address-card"></i> References</h3>
+          <div class="resume-entry">
+            <div class="resume-entry-title">Ts. Inv. Dr. Rafizah Binti Mohd Hanifa</div>
+            <div class="resume-entry-sub">Lecturer, JTM, UTHM</div>
+            <div class="resume-entry-date"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a3d1c2c5cad9c2cbe3d6d7cbce8dc6c7d68dceda">[email&#160;protected]</a> · 012-420-3741</div>
+          </div>
+          <div class="resume-entry">
+            <div class="resume-entry-title">Dr. Wan Ibtisam Binti Haji Wan Omar</div>
+            <div class="resume-entry-sub">Lecturer, JTM, UTHM</div>
+            <div class="resume-entry-date"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0172603130303033417475696c2f6465742f6c78">[email&#160;protected]</a> · 011-555-70337</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div>
+
+        <!-- TECHNICAL SKILLS -->
+        <div class="resume-block">
+          <h3><i class="fa-solid fa-microchip"></i> Technical Skills</h3>
+          <ul class="resume-list">
+            <li>Programming — C++</li>
+            <li>Problem-solving & logical thinking</li>
+            <li>Algorithm design</li>
+            <li>Mathematical analysis</li>
+            <li>Cybersecurity fundamentals</li>
+            <li>Networking basics</li>
+            <li>Computer architecture</li>
+            <li>UI/UX design using Figma</li>
+            <li>Technical troubleshooting (VS Code)</li>
+          </ul>
+        </div>
+
+        <!-- TRANSFERABLE SKILLS -->
+        <div class="resume-block">
+          <h3><i class="fa-solid fa-people-arrows"></i> Transferable Skills</h3>
+          <ul class="resume-list">
+            <li>Communication (written and verbal)</li>
+            <li>Critical thinking</li>
+            <li>Problem-solving</li>
+            <li>Adaptability</li>
+            <li>Time management</li>
+            <li>Organization</li>
+            <li>Creative writing & idea generation</li>
+            <li>Academic writing & summarizing</li>
+          </ul>
+        </div>
+
+        <!-- LANGUAGES -->
+        <div class="resume-block">
+          <h3><i class="fa-solid fa-language"></i> Languages</h3>
+          <div class="resume-entry">
+            <div class="resume-entry-title">Malay</div>
+            <div class="resume-entry-sub">Native — Speaking, Writing, Reading</div>
+          </div>
+          <div class="resume-entry">
+            <div class="resume-entry-title">English</div>
+            <div class="resume-entry-sub">Proficient — Speaking, Writing, Reading</div>
+          </div>
+        </div>
+
+        <!-- ACHIEVEMENTS -->
+        <div class="resume-block">
+          <h3><i class="fa-solid fa-trophy"></i> Achievements</h3>
+          <div class="resume-entry">
+            <div class="resume-entry-title">SMK Jeli</div>
+            <ul class="resume-list" style="margin-top:0.5rem;">
+              <li>Anugerah Pelajar Cemerlang SPM</li>
+              <li>1st Place — Public Speaking (School Level)</li>
+            </ul>
+          </div>
+          <div class="resume-entry">
+            <div class="resume-entry-title">UTHM</div>
+            <ul class="resume-list" style="margin-top:0.5rem;">
+              <li>Head of Secretariat — Akademi Rukun Negara</li>
+              <li>Media Head — GRIPP</li>
+              <li>Media Head — Malam Satu Suara</li>
+              <li>Technical Committee — iDrive</li>
+              <li>Technical Committee — Sambutan Kemerdekaan JSS</li>
+              <li>Participant — Hussein Leadership Camp 4.0</li>
+              <li>Participant — Kenyir Unity Quest</li>
+              <li>Participant — Amanat Menteri Perpaduan Negara</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </div> <!-- end hidden -->
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2025 Wan Ahmad Faiz · Built for UTHM Assignment</p>
+      <div class="footer-links">
+        <a h
