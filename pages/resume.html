@@ -37,91 +37,27 @@
     </div>
 
     <!-- PDF VIEWER -->
-    <!-- PDF VIEWER -->
+<!-- SIMPLE PDF VIEWER (WORKS EVERYWHERE) -->
 <div class="pdf-viewer-wrapper">
   <div class="pdf-toolbar">
     <span class="pdf-label">
       <i class="fa-regular fa-file-pdf"></i>&nbsp; resume.pdf
     </span>
 
-    <div class="pdf-controls">
-      <button id="prev-page"><i class="fa-solid fa-chevron-left"></i></button>
-      <span id="page-info">Page 1</span>
-      <button id="next-page"><i class="fa-solid fa-chevron-right"></i></button>
-
-      <button id="zoom-out"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
-      <button id="zoom-in"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-    </div>
-
-    <a class="pdf-download-btn" href="files/resume.pdf" download>
+    <a class="pdf-download-btn" href="../assets/resume.pdf" download>
       <i class="fa-solid fa-download"></i>&nbsp; Download
     </a>
   </div>
 
-  <div class="pdf-canvas-container">
-    <canvas id="pdf-canvas"></canvas>
-    <div id="pdf-loading" class="pdf-loading">
-      <i class="fa-solid fa-spinner fa-spin"></i>&nbsp; Loading PDF...
-    </div>
+  <div class="pdf-frame-container">
+    <iframe 
+      src="../assets/resume.pdf" 
+      width="100%" 
+      height="700px"
+      style="border:none;">
+    </iframe>
   </div>
 </div>
-
-<!-- PDF.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-
-<script>
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-let pdfDoc = null,
-    currentPage = 1,
-    totalPages = 1,
-    scale = 1.4;
-
-const canvas = document.getElementById('pdf-canvas');
-const ctx = canvas.getContext('2d');
-const loading = document.getElementById('pdf-loading');
-const pageInfo = document.getElementById('page-info');
-const prevBtn = document.getElementById('prev-page');
-const nextBtn = document.getElementById('next-page');
-
-function renderPage(num) {
-  loading.classList.remove('hidden');
-
-  pdfDoc.getPage(num).then(page => {
-    const viewport = page.getViewport({ scale });
-
-    canvas.width = viewport.width;
-    canvas.height = viewport.height;
-
-    const renderContext = {
-      canvasContext: ctx,
-      viewport: viewport
-    };
-
-    page.render(renderContext).promise.then(() => {
-      loading.classList.add('hidden');
-      pageInfo.textContent = `Page ${num} of ${totalPages}`;
-
-      prevBtn.disabled = num <= 1;
-      nextBtn.disabled = num >= totalPages;
-    });
-  });
-}
-
-// LOAD PDF
-pdfjsLib.getDocument('files/resume.pdf').promise
-  .then(doc => {
-    pdfDoc = doc;
-    totalPages = doc.numPages;
-    renderPage(currentPage);
-  })
-  .catch(err => {
-    console.error("PDF ERROR:", err);
-    document.getElementById('pdf-loading').innerHTML =
-      "❌ Cannot load PDF (check path)";
-  });
-
 // BUTTON CONTROLS
 prevBtn.addEventListener('click', () => {
   if (currentPage > 1) {
