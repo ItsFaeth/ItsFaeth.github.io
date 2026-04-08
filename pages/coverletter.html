@@ -59,15 +59,6 @@
   </div>
 </div>
 
-    <main>
-      <script>
-      prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderPage(currentPage); } });
-      nextBtn.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderPage(currentPage); } });
-      document.getElementById('zoom-in').addEventListener('click', () => { scale = Math.min(scale + 0.2, 3.0); renderPage(currentPage); });
-      document.getElementById('zoom-out').addEventListener('click', () => { scale = Math.max(scale - 0.2, 0.6); renderPage(currentPage); });
-    </script>
-  </main>
-
   <footer class="site-footer">
     <div class="footer-inner">
       <p>© 2025 Wan Ahmad Faiz · Built for UTHM Assignment</p>
