@@ -181,7 +181,7 @@
         });
       }
 
-      pdfjsLib.getDocument('resume.pdf').promise.then(doc => {
+      pdfjsLib.getDocument('files/resume.pdf').promise.then(doc => {
         pdfDoc = doc;
         totalPages = doc.numPages;
         renderPage(currentPage);
